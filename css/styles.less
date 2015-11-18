@@ -1,0 +1,108 @@
+*{margin: 0; padding: 0;}
+img{border:0;}
+body{background-color: saturate(@base,30%);}
+@media all and (max-width: 640px) {
+	body {
+		width: 640px;
+	}
+}
+
+@base: #002240;
+@icon_back: rgba(180, 180, 180, 0.3);
+@icon: rgb(150, 150, 150);
+@boxShadowColor: lighten(@base,50%);
+@violet: #660099;
+
+.block{width: 98%; height: 642px; position: relative; margin: 5px auto 0; background-color: lighten(@base,10%);}
+.abs{position:absolute;}
+.center{top: 50%; left: 50%;}
+.icon{background-color: @icon_back; width: 50px; height: 50px; position: absolute; border-radius: 50%;}
+.icon div{position: absolute; background-color: @icon;}
+.wh0{width:0px; height: 0px;}
+.boxShadow{
+	-wekit-box-shadow: 0 0 3px 2px @boxShadowColor inset;
+	-moz-box-shadow: 0 0 3px 2px @boxShadowColor inset;
+	box-shadow:0 0 3px 2px @boxShadowColor inset;
+}
+
+.v{
+	-wekit-box-shadow: 0 0 10px 2px @violet inset;
+	-moz-box-shadow: 0 0 10px 2px @violet inset;
+	box-shadow:0 0 10px 2px @violet inset;
+}
+
+// stage1 3d transform
+.perspective{
+	-wekit-perspective: 700px;
+	-moz-perspective: 700px;
+	-o-perspective:700px;
+	perspective:700px;
+}
+.trsf_origin{
+	-webkit-transform-origin: 50% 50%;
+	-moz-transform-origin: 50% 50%;
+	-o-transform-origin: 50% 50%;
+	transform-origin: 50% 50%;
+}
+.trsf_style_3d{
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	-o-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+}
+.trsf_style_flat{
+	-webkit-transform-style: flat;
+	-moz-transform-style: flat;
+	-o-transform-style: flat;
+	transform-style: flat;
+}
+.back_face{
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	-ms-backface-visibility: hidden;
+	-o-backface-visibility: hidden;
+}
+.transform(@rot_x, @rot_y, @rot_z, @trl_x, @trl_y, @trl_z){
+	-webkit-transform: rotateY(@rot_y) rotateX(@rot_x) rotateZ(@rot_z) translateX(@trl_x) translateY(@trl_y) translateZ(@trl_z);
+	transform: rotateY(@rot_y) rotateX(@rot_x) rotateZ(@rot_z) translateX(@trl_x) translateY(@trl_y) translateZ(@trl_z);
+}
+
+div#block1{
+
+	.perspective; .trsf_origin;
+
+	.rubik{
+		.abs; .center; .trsf_style_3d;
+		cursor: pointer;
+		.axis{
+			.abs;
+			width: 150%; height: 1px; background-color: #fff; top: 50%; left: -25%;
+			.d{
+				float: right; width: 0; height: 0; border: 10px solid #fff; border-top-color: transparent; border-bottom-color: transparent; border-right-width: 0; margin-top: -10px; 
+			}
+		}
+		.axis.y{
+			transform: rotateZ(-90deg);
+		}
+		.axis.z{
+			transform: rotateY(-90deg);
+		}
+
+		.tile{
+			.abs; .trsf_style_3d; .back_face;
+			padding: 1px; background-clip: content-box; font-size: 0.6rem; text-align: center;
+		}
+		.back{background-color: rgb(0,153,51);}
+		.left{background-color: rgb(255,153,51);}
+		.right{background-color: rgb(255,51,51);}
+		.top{background-color: rgb(255,255,51);}
+		.bottom{background-color: rgb(255,255,255);}
+		.front{background-color: rgb(102,51,255);}
+	}
+
+	.button{
+		width: 10%; height: 7%; border: 1px solid #fff; border-radius: 4px; text-align: center;
+	}
+	.button:hover{cursor: pointer;}
+
+}

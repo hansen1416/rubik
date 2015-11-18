@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width">
+
+	<title>Rubik's Cube</title>
+
+	<link rel="stylesheet/less" type="text/css" href="css/styles.less"/>
+
+	<script src="js/less.js"></script>
+    <script src="js/rubik.js"></script>
+    <script src="js/fastdom.js"></script>
+
+	<script type="text/javascript">
+	
+		window.addEventListener("load", callback, false);
+		
+		function callback(){
+			var R = new Rubik({
+				stage: "block1",
+				obj: ["rubik"],
+				tamano: 0.6,
+				impulse: true,
+				resetMotion: true,
+				omegaGap: 0.8,			//default 0.2, possible value 0 - infinite
+				lambda:0.008			//default 0.01, possible value 0 - infinite
+			});
+		}
+
+
+
+	</script>
+</head>
+
+<body id="body">
+	
+	<div class="block" id="block1">
+		
+		<div class="rubik" id="rubik">
+			<div class="axis x"><span class="d">x</span></div>
+			<div class="axis y"><span class="d">y</span></div>
+			<div class="axis z"><span class="d">z</span></div>
+			<div class="tile back"></div>
+			<div class="tile back"></div>
+			<div class="tile back"></div>
+			<div class="tile back"></div>
+			<div class="tile back"></div>
+			<div class="tile back"></div>
+			<div class="tile back"></div>
+			<div class="tile back"></div>
+			<div class="tile back"></div>
+			<div class="tile back"></div>
+			<div class="tile back"></div>
+			<div class="tile back"></div>
+			<div class="tile back"></div>
+			<div class="tile back"></div>
+			<div class="tile back"></div>
+			<div class="tile back"></div>
+			<div class="tile left"></div>
+			<div class="tile left"></div>
+			<div class="tile left"></div>
+			<div class="tile left"></div>
+			<div class="tile left"></div>
+			<div class="tile left"></div>
+			<div class="tile left"></div>
+			<div class="tile left"></div>
+			<div class="tile left"></div>
+			<div class="tile left"></div>
+			<div class="tile left"></div>
+			<div class="tile left"></div>
+			<div class="tile left"></div>
+			<div class="tile left"></div>
+			<div class="tile left"></div>
+			<div class="tile left"></div>
+			<div class="tile right"></div>
+			<div class="tile right"></div>
+			<div class="tile right"></div>
+			<div class="tile right"></div>
+			<div class="tile right"></div>
+			<div class="tile right"></div>
+			<div class="tile right"></div>
+			<div class="tile right"></div>
+			<div class="tile right"></div>
+			<div class="tile right"></div>
+			<div class="tile right"></div>
+			<div class="tile right"></div>
+			<div class="tile right"></div>
+			<div class="tile right"></div>
+			<div class="tile right"></div>
+			<div class="tile right"></div>
+			<div class="tile top"></div>
+			<div class="tile top"></div>
+			<div class="tile top"></div>
+			<div class="tile top"></div>
+			<div class="tile top"></div>
+			<div class="tile top"></div>
+			<div class="tile top"></div>
+			<div class="tile top"></div>
+			<div class="tile top"></div>
+			<div class="tile top"></div>
+			<div class="tile top"></div>
+			<div class="tile top"></div>
+			<div class="tile top"></div>
+			<div class="tile top"></div>
+			<div class="tile top"></div>
+			<div class="tile top"></div>
+			<div class="tile bottom"></div>
+			<div class="tile bottom"></div>
+			<div class="tile bottom"></div>
+			<div class="tile bottom"></div>
+			<div class="tile bottom"></div>
+			<div class="tile bottom"></div>
+			<div class="tile bottom"></div>
+			<div class="tile bottom"></div>
+			<div class="tile bottom"></div>
+			<div class="tile bottom"></div>
+			<div class="tile bottom"></div>
+			<div class="tile bottom"></div>
+			<div class="tile bottom"></div>
+			<div class="tile bottom"></div>
+			<div class="tile bottom"></div>
+			<div class="tile bottom"></div>
+			<div class="tile front"></div>
+			<div class="tile front"></div>
+			<div class="tile front"></div>
+			<div class="tile front"></div>
+			<div class="tile front"></div>
+			<div class="tile front"></div>
+			<div class="tile front"></div>
+			<div class="tile front"></div>
+			<div class="tile front"></div>
+			<div class="tile front"></div>
+			<div class="tile front"></div>
+			<div class="tile front"></div>
+			<div class="tile front"></div>
+			<div class="tile front"></div>
+			<div class="tile front"></div>
+			<div class="tile front"></div>
+		</div>
+		
+		<div class="button" id="reset">重置</div>
+		<div class="button" id="shuffle">打乱</div>
+
+	</div>
+	
+
+</body>
+</html>
