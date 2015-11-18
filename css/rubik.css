@@ -1,0 +1,101 @@
+body {
+  background-color: #002240;
+}
+.abs {
+  position: absolute;
+}
+.boxShadow {
+  -wekit-box-shadow: 0 0 3px 2px #40a5ff inset;
+  -moz-box-shadow: 0 0 3px 2px #40a5ff inset;
+  box-shadow: 0 0 3px 2px #40a5ff inset;
+}
+.perspective {
+  -webkit-perspective: 700px;
+  -moz-perspective: 700px;
+  perspective: 700px;
+}
+.pers_origin {
+  -webkit-perspective-origin: 50% 30%;
+  -moz-perspective-origin: 50% 30%;
+  perspective-origin: 50% 30%;
+}
+.trsf_origin {
+  -webkit-transform-origin: 50% 50%;
+  -moz-transform-origin: 50% 50%;
+  -o-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+}
+.trsf_style_3d {
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+.trsf_style_flat {
+  -webkit-transform-style: flat;
+  -moz-transform-style: flat;
+  -o-transform-style: flat;
+  transform-style: flat;
+}
+.back_face {
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  -o-backface-visibility: hidden;
+}
+#content {
+  -webkit-perspective: 700px;
+  -moz-perspective: 700px;
+  perspective: 700px;
+  -webkit-perspective-origin: 50% 30%;
+  -moz-perspective-origin: 50% 30%;
+  perspective-origin: 50% 30%;
+  -webkit-transform-origin: 50% 50%;
+  -moz-transform-origin: 50% 50%;
+  -o-transform-origin: 50% 50%;
+  transform-origin: 50% 50%;
+}
+#content .rubik {
+  position: absolute;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  top: 50%;
+  left: 50%;
+}
+#content .rubik .tile {
+  position: absolute;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  -o-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -ms-backface-visibility: hidden;
+  -o-backface-visibility: hidden;
+  padding: 1px;
+  background-clip: content-box;
+  font-size: 0.75rem;
+  text-align: center;
+}
+#content .rubik .back {
+  background-color: #009933;
+}
+#content .rubik .left {
+  background-color: #ff9933;
+}
+#content .rubik .right {
+  background-color: #ff3333;
+}
+#content .rubik .top {
+  background-color: #ffff33;
+}
+#content .rubik .bottom {
+  background-color: #ffffff;
+}
+#content .rubik .front {
+  background-color: #6633ff;
+}
+/*# sourceMappingURL=rubik.css.map */

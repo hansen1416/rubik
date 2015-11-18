@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+		<meta name="misapplication-tap-highlight" content="no"/>
+		<meta name="HandheldFriendly" content="true"/>
+		<meta name="MobileOptimized" content="320"/>
+		<title>Rubik</title>
+		<script type="text/javascript" src="js/update.js"></script>
+		<script type="text/javascript" charset="utf-8">
+//取消浏览器的所有事件，使得active的样式在手机上正常生效
+document.addEventListener('touchstart',function(){
+    return false;
+},true);
+// 禁止选择
+document.oncontextmenu=function(){
+	return false;
+};
+// H5 plus事件处理
+var as='pop-in';// 默认窗口动画
+function plusReady(){
+	// 隐藏滚动条
+	plus.webview.currentWebview().setStyle({scrollIndicator:'none'});
+	// Android处理返回键
+	plus.key.addEventListener('backbutton',function(){
+		if(confirm('确认退出？')){
+			plus.runtime.quit();
+		}
+	},false);
+	compatibleAdjust();
+}
+if(window.plus){
+	plusReady();
+}else{
+	document.addEventListener('plusready',plusReady,false);
+}
+// DOMContentLoaded事件处理
+var _domReady=false;
+document.addEventListener('DOMContentLoaded',function(){
+	_domReady=true;
+	compatibleAdjust();
+},false);
+// 兼容性样式调整
+var _adjust=false;
+function compatibleAdjust(){
+	if(_adjust||!window.plus||!_domReady){
+		return;
+	}
+	_adjust=true;
+	// iOS平台使用div的滚动条
+	if('iOS'==plus.os.name){
+		document.getElementById('content').className='scontent';
+	}
+	// 预创建二级窗口
+//	preateWebviews();
+	// 关闭启动界面
+	setTimeout(function(){
+		plus.navigator.closeSplashscreen();
+	},500);
+}
+// 处理点击事件
+var _openw=null;
+function clicked(id,a,s){
+	if(_openw){return;}
+	a||(a=as);
+	_openw=preate[id];
+	if(_openw){
+		_openw.showded=true;
+		_openw.show(a,null,function(){
+			_openw=null;//避免快速点击打开多个页面
+		});
+	}else{
+//		var wa=plus.nativeUI.showWaiting();
+		_openw=plus.webview.create(id,id,{scrollIndicator:'none',scalable:false,popGesture:'hide'},{preate:true});
+		preate[id]=_openw;
+		_openw.addEventListener('loaded',function(){//叶面加载完成后才显示
+//		setTimeout(function(){//延后显示可避免低端机上动画时白屏
+//			wa.close();
+			_openw.showded=true;
+			s||_openw.show(a,null,function(){
+				_openw=null;//避免快速点击打开多个页面
+			});
+			s&&(_openw=null);//避免s模式下变量无法重置
+//		},10);
+		},false);
+		_openw.addEventListener('close',function(){//页面关闭后可再次打开
+			_openw=null;
+			preate[id]&&(preate[id]=null);//兼容窗口的关闭
+		},false);
+	}
+}
+// 预创建二级页面
+var preate={};
+function preateWebviews(){
+	preateWebivew('plus/webview.html');
+	var plist=document.getElementById('plist').children;
+	// 由于启动是预创建过多Webview窗口会消耗较长的时间，所以这里限制仅创建5个
+	for( var i=0;i<plist.length&&i<2;i++){
+		var id=plist[i].id;
+		id&&(id.length>0)&&preateWebivew(id);
+	}
+}
+function preateWebivew(id){
+	if(!preate[id]){
+		var w=plus.webview.create(id,id,{scrollIndicator:'none',scalable:false,popGesture:'hide'},{preate:true});
+		preate[id]=w;
+		w.addEventListener('close',function(){//页面关闭后可再次打开
+			_openw=null;
+			preate[id]&&(preate[id]=null);//兼容窗口的关闭
+		},false);
+	}
+}
+// 清除预创建页面(仅)
+function preateClear(){
+	for(var p in preate){
+		var w=preate[p];
+		if(w&&w.showded&&!w.isVisible()){
+			w.close();
+			preate[p]=null;
+		}
+	}
+}
+	</script>
+	<link rel="stylesheet" href="css/common.css" type="text/css" charset="utf-8"/>
+	<link rel="stylesheet" href="css/rubik.css" type="text/css" charset="utf-8"/>
+		
+    <script src="js/rubik.js"></script>
+    <script src="js/fastdom.js"></script>
+	<script type="text/javascript">
+	
+		window.addEventListener("load", callback, false);
+		
+		function callback(){
+			var rub = new Rubik({
+				stage: "content",
+				obj: ["rubik"],
+				tamano: 0.7,
+				impulse: true,
+				resetMotion: true,
+				omegaGap: 0.8,			//default 0.2, possible value 0 - infinite
+				lambda:0.01			//default 0.01, possible value 0 - infinite
+			});
+		}
+
+	</script>
+	</head>
+	<body onselectstart="return false;">
+		<div id="content" class="block">
+		
+			<div class="rubik" id="rubik">
+				<div class="tile back"></div>
+				<div class="tile back"></div>
+				<div class="tile back"></div>
+				<div class="tile back"></div>
+				<div class="tile back"></div>
+				<div class="tile back"></div>
+				<div class="tile back"></div>
+				<div class="tile back"></div>
+				<div class="tile back"></div>
+				<div class="tile back"></div>
+				<div class="tile back"></div>
+				<div class="tile back"></div>
+				<div class="tile back"></div>
+				<div class="tile back"></div>
+				<div class="tile back"></div>
+				<div class="tile back"></div>
+				<div class="tile left"></div>
+				<div class="tile left"></div>
+				<div class="tile left"></div>
+				<div class="tile left"></div>
+				<div class="tile left"></div>
+				<div class="tile left"></div>
+				<div class="tile left"></div>
+				<div class="tile left"></div>
+				<div class="tile left"></div>
+				<div class="tile left"></div>
+				<div class="tile left"></div>
+				<div class="tile left"></div>
+				<div class="tile left"></div>
+				<div class="tile left"></div>
+				<div class="tile left"></div>
+				<div class="tile left"></div>
+				<div class="tile right"></div>
+				<div class="tile right"></div>
+				<div class="tile right"></div>
+				<div class="tile right"></div>
+				<div class="tile right"></div>
+				<div class="tile right"></div>
+				<div class="tile right"></div>
+				<div class="tile right"></div>
+				<div class="tile right"></div>
+				<div class="tile right"></div>
+				<div class="tile right"></div>
+				<div class="tile right"></div>
+				<div class="tile right"></div>
+				<div class="tile right"></div>
+				<div class="tile right"></div>
+				<div class="tile right"></div>
+				<div class="tile top"></div>
+				<div class="tile top"></div>
+				<div class="tile top"></div>
+				<div class="tile top"></div>
+				<div class="tile top"></div>
+				<div class="tile top"></div>
+				<div class="tile top"></div>
+				<div class="tile top"></div>
+				<div class="tile top"></div>
+				<div class="tile top"></div>
+				<div class="tile top"></div>
+				<div class="tile top"></div>
+				<div class="tile top"></div>
+				<div class="tile top"></div>
+				<div class="tile top"></div>
+				<div class="tile top"></div>
+				<div class="tile bottom"></div>
+				<div class="tile bottom"></div>
+				<div class="tile bottom"></div>
+				<div class="tile bottom"></div>
+				<div class="tile bottom"></div>
+				<div class="tile bottom"></div>
+				<div class="tile bottom"></div>
+				<div class="tile bottom"></div>
+				<div class="tile bottom"></div>
+				<div class="tile bottom"></div>
+				<div class="tile bottom"></div>
+				<div class="tile bottom"></div>
+				<div class="tile bottom"></div>
+				<div class="tile bottom"></div>
+				<div class="tile bottom"></div>
+				<div class="tile bottom"></div>
+				<div class="tile front"></div>
+				<div class="tile front"></div>
+				<div class="tile front"></div>
+				<div class="tile front"></div>
+				<div class="tile front"></div>
+				<div class="tile front"></div>
+				<div class="tile front"></div>
+				<div class="tile front"></div>
+				<div class="tile front"></div>
+				<div class="tile front"></div>
+				<div class="tile front"></div>
+				<div class="tile front"></div>
+				<div class="tile front"></div>
+				<div class="tile front"></div>
+				<div class="tile front"></div>
+				<div class="tile front"></div>
+			</div>
+					
+			<div class="button" id="reset">重置</div>
+			<div class="button" id="shuffle">打乱</div>
+		</div>
+		
+		<script>
+			var content = document.getElementById('content'),
+				pageWidth = window.innerWidth,
+				pageHeight = window.innerHeight;
+
+			if (typeof pageWidth != 'number') {
+				if (document.compatMode == 'CSS1Compat') {
+					pageWidth = document.documentElement.clientWidth;
+					pageHeight = document.documentElement.clientHeight;
+				}else{
+					pageWidth = document.body.clientWidth;
+					pageHeight = document.body.clientHeight;
+				};
+			};
+			
+			content.style['width'] = pageWidth+'px';
+			content.style['height'] = pageHeight+'px';
+		</script>
+	</body>
+</html>
